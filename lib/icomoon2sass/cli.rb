@@ -30,7 +30,9 @@ class Icomoon2Sass::CLI < Thor::Group
 
     end
 
-    puts files.files
+    return say_status('You seem to be missing \'selection.json\'.', '', :red) unless files.files['selection.json']
+
+    puts Icomoon2Sass.icons files
   end
 end
 

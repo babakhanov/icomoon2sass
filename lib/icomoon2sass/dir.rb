@@ -9,7 +9,7 @@ class Icomoon2Sass::Dir
 
       @files[file.sub("#{directory}/", '')] = File.read(file) if extractable? file
     end
-  
+
   end
 
   private
