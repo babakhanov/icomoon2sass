@@ -8,15 +8,15 @@ help_message = <<-EOT
 Usage: icomoon2sass path/to/icomoon(.zip) [OPTIONS]
 
 OPTIONS
-  --font-path PATH  Destination path for font files, defaults to the current directory
-  --sass-path PATH  Path to Sass project, defaults to the current directory
+  --font-path PATH  Destination path for font files, defaults to current directory
+  --sass-path PATH  Destination path for Sass files, defaults to current directory
   --scss            Use the SCSS syntax
   -c, --compatible  Generate code compatible with Sass 3.2
 
 
 OUTPUT
-  By default icomoon2sass generates Sass code in the indented Sass syntax. Further, the 
-  default generated code is only compaitble with Sass 3.3+.
+  By default icomoon2sass generates Sass code in the indented Sass syntax. Further,
+  the default generated code is only compaitble with Sass 3.3+.
 
     $icons: (
         github: \'\\28\',
@@ -30,8 +30,8 @@ OUTPUT
         @each $value in $content
           content: $value
 
-  Sass 3.2 doesn't support hash-like maps, so if you're still using 3.2, you'll need to 
-  set the '-c' flag, which will generate code like this:
+  Sass 3.2 doesn't support hash-like maps, so if you're still using 3.2, you'll need
+  to set the '-c' flag, which will generate code like this:
 
     $github-icon: \'\\28\'
     $twitter-icon: \'\\29\'
@@ -53,7 +53,7 @@ command = ARGV[0]
 
 if !(command.nil? || command == '--help')
   Icomoon2Sass::CLI.start
-  
+
 
 elsif command == '--help'
   puts help_message
