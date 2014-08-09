@@ -10,8 +10,8 @@ class Icomoon2Sass::CLI < Thor::Group
 
   class_option :'font-path', type: :string, default: './', desc: 'Destination path for font files'
   class_option :'sass-path', type: :string, default: './', desc: 'Path to Sass project'
-  class_option :syntax, type: :string, default: 'sass', desc: 'Sass syntax, Sass or SCSS'
-  class_option :format, type: :string, default: 'static', desc: 'variable format, \'static\' or \'dynamic\''
+  class_option :scss, type: :boolean, default: false, desc: 'Use the SCSS syntax'
+  class_option :compatible, aliases: '-c', type: :boolean, default: false, desc: 'Generate code compatible with Sass 3.2'
 
   def start
 

@@ -8,13 +8,30 @@ help_message = <<-EOT
 Usage: icomoon2sass path/to/icomoon(.zip) [OPTIONS]
 
 OPTIONS
-  --font-path=DIR,  destination path for font files, defaults to the current directory
-  --sass-path=DIR,  path to Sass project, defaults to the current directory
-  --syntax=SYNTAX,  Sass syntax, Sass or SCSS, defaults to 'sass'
-  --format=FORMAT,  variable format, 'static' or 'dynamic', defaults to 'static'
+  --font-path PATH  Destination path for font files, defaults to the current directory
+  --sass-path PATH  Path to Sass project, defaults to the current directory
+  --scss            Use the SCSS syntax
+  -c, --compatible  Generate code compatible with Sass 3.2
 
-FORMAT
-  The 'static' format is compatible with Sass 3.2 and up, and generates Sass like this:
+
+OUTPUT
+  By default icomoon2sass generates Sass code in the indented Sass syntax. Further, the 
+  default generated code is only compaitble with Sass 3.3+.
+
+    $icons: (
+        github: \'\\28\',
+        twitter: \'\\29\',
+        gear: \'\\e002\',
+        ...
+    )
+
+    @each $placeholder, $content in $icons
+      %icon-\#{$placeholder}
+        @each $value in $content
+          content: $value
+
+  Sass 3.2 doesn't support hash-like maps, so if you're still using 3.2, you'll need to 
+  set the '-c' flag, which will generate code like this:
 
     $github-icon: \'\\28\'
     $twitter-icon: \'\\29\'
@@ -30,30 +47,6 @@ FORMAT
 
     %gear-icon
       content: $gear-icon
-
-
-  The 'dynamic' placeholder format is only compatible with Sass 3.3 and up, and
-  generates Sass like this:
-
-    $icons: (
-      github: \'\\28\',
-      twitter: \'\\29\',
-      gear: \'\\e002\',
-      ...
-    )
-
-    @each $placeholder, $content in $icons
-      %icon-\#{$placeholder}
-        @each $value in $content
-          content: $value
-
-
-  In addition to compatiblity, the two formats have other pros/cons: the static format
-  gives you easy access to the internals of each icon's placholder, at the expense of
-  vorbosity; the dynamic format dramatically DRYs up your code, but doesn't allow easy
-  access to individual placeholders and--depending on your build environment--may
-  affect compile time performance.
-
 EOT
 
 command = ARGV[0]

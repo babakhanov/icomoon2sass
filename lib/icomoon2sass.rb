@@ -15,7 +15,7 @@ module Icomoon2Sass
     json['icons'].each do |icon|
       icons[icon['properties']['name']] = {
         character: [icon['properties']['code']].pack('U'),
-        codepoint: '\%0x' % icon['properties']['code'].ord        
+        codepoint: '\%0x' % icon['properties']['code'].ord
       }
 
     end
