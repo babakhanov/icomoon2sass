@@ -26,7 +26,7 @@ OUTPUT
     )
 
     @each $placeholder, $content in $icons
-      %icon-\#{$placeholder}
+      %\#{$placeholder}-icon
         @each $value in $content
           content: $value
 

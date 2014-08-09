@@ -32,7 +32,15 @@ class Icomoon2Sass::CLI < Thor::Group
 
     return say_status('You seem to be missing \'selection.json\'.', '', :red) unless files.files['selection.json']
 
+
     icons = Icomoon2Sass::Icons.new files
+
+    syntax = options['scss'] ? 'scss' : 'sass'
+
+    compatible = options['compatible'] || false
+   
+    Icomoon2Sass::Sass.new icons, syntax, compatible
+    
   end
 end
 
