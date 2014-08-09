@@ -7,17 +7,24 @@ module Icomoon2Sass
 
   EXTRACTABLE_PATTERN = /(fonts\/.*|selection\.js|style\.css)/
 
-  def self.icons(files)
-    icons = {}
 
-    json = JSON.parse(files.files['selection.json'])
+  class Icons
+    attr_reader :icons
 
-    json['icons'].each do |icon|
-      icons[icon['properties']['name']] = {
-        character: [icon['properties']['code']].pack('U'),
-        codepoint: '\%0x' % icon['properties']['code'].ord
-      }
+    def initialize(files)
+      @icons = {}
 
+      json = JSON.parse(files.files['selection.json'])
+
+      json['icons'].each do |icon|
+        @icons[icon['properties']['name']] = {
+          character: [icon['properties']['code']].pack('U'),
+          codepoint: '\%0x' % icon['properties']['code'].ord
+        }
+
+      end
+
+      return @icons
     end
 
     return icons
