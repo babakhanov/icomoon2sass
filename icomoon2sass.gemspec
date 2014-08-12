@@ -19,8 +19,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   #spec.add_development_dependency 'rake'
-  spec.add_dependency('thor')
-  spec.add_dependency('rubyzip')
+  spec.add_dependency('thor', '~> 0.19')
+  spec.add_dependency('rubyzip', '~> 1.1')
   spec.add_dependency('sass', '>= 3.2.0')
 end
 
