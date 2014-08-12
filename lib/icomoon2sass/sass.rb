@@ -4,20 +4,23 @@ require 'sass'
 class Icomoon2Sass::Sass
   attr_reader :code, :syntax
 
-  def initialize(icons, syntax = 'sass', compatible = false)
+  def initialize(font, syntax = 'sass', compatible = false)
     @syntax = syntax
 
     if compatible
-      @code = sass_convert 'sass', syntax, template('list', icons.icons)
+      @code = sass_convert 'sass', syntax, template('list', font)
       
     else
-      @code = sass_convert 'sass', syntax, template('map', icons.icons)
+      @code = sass_convert 'sass', syntax, template('map', font)
     end
   end
 
   private
 
-    def template(format, icons)
+    def template(format, font)
+      icons = font.icons
+      font_family = font.font_family
+
       tmpl = File.read("lib/icomoon2sass/templates/#{format}.sass.erb")
   
       renderer = ERB.new(tmpl)
