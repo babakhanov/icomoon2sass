@@ -16,7 +16,7 @@
   -moz-osx-font-smoothing: grayscale
 
 <% icons.each do |icon, content| %>
-<%= "%#{icon}-icon" %>:before
+<%= "%#{icon}-icon" %>
   @extend %icon-pseudo-content
 
   content: <%= "$#{icon}-icon" %>

@@ -40,7 +40,7 @@ $icons: ( <%=
 
 
 @each $placeholder, $content in $icons
-  %#{$placeholder}-icon:before
+  %#{$placeholder}-icon
     @extend %icon-pseudo-content
 
     @each $value in $content

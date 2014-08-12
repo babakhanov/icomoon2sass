@@ -5,25 +5,25 @@ class Icomoon2Sass::Sass
   attr_reader :code, :syntax
 
   def initialize(font, syntax = 'sass', compatible = false)
+    @font = font
     @syntax = syntax
+    
+    @format = compatible ? 'list' : 'map'
+    
+    @code = sass_convert 'sass', syntax, template(@format)
+  end
 
-    if compatible
-      @code = sass_convert 'sass', syntax, template('list', font)
-
-    else
-      @code = sass_convert 'sass', syntax, template('map', font)
-    end
+  def oocss
+    sass_convert 'sass', syntax, template("oocss_#{@format}")
   end
 
   private
 
-    def template(format, font)
-      icons = font.icons
-      font_family = font.font_family
+    def template(tmpl)
+      icons = @font.icons
+      font_family = @font.font_family
 
-      tmpl = File.read("#{File.dirname(__FILE__)}/templates/#{format}.sass.erb")
-
-      renderer = ERB.new(tmpl)
+      renderer = ERB.new File.read("#{File.dirname(__FILE__)}/templates/#{tmpl}.sass.erb")
       renderer.result(binding)
     end
 

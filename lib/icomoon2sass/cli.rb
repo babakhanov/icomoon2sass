@@ -11,6 +11,7 @@ class Icomoon2Sass::CLI < Thor::Group
   class_option :'sass-path', type: :string, default: './', desc: 'Destination path for Sass files'
   class_option :scss, type: :boolean, default: false, desc: 'Use the SCSS syntax'
   class_option :compatible, aliases: '-c', type: :boolean, default: false, desc: 'Generate code compatible with Sass 3.2'
+  class_option :oocss, type: :boolean, default: false, desc: 'Generate OOCSS-style classes'
 
   def start
 
@@ -40,14 +41,15 @@ class Icomoon2Sass::CLI < Thor::Group
 
     sass = Icomoon2Sass::Sass.new font, syntax, compatible
 
-    
 
-    
     # Save the Sass file
     create_file "#{options['sass-path']}/_icons.#{sass.syntax}", sass.code
 
-    files.font_files.each do |filename, content|
+    if options['oocss']
+      create_file "#{options['sass-path']}/_oocss_icons.#{sass.syntax}", sass.oocss
+    end
 
+    files.font_files.each do |filename, content|
       create_file "#{options['font-path']}/#{filename.sub('fonts/', '')}", content
     end
 
