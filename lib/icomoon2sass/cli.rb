@@ -1,7 +1,6 @@
 require 'thor'
 require 'thor/group'
-require 'icomoon2sass/zip'
-require 'icomoon2sass/dir'
+require 'icomoon2sass'
 
 class Icomoon2Sass::CLI < Thor::Group
   include Thor::Actions
@@ -39,7 +38,9 @@ class Icomoon2Sass::CLI < Thor::Group
 
     compatible = options['compatible'] || false
    
-    Icomoon2Sass::Sass.new icons, syntax, compatible
+    sass = Icomoon2Sass::Sass.new icons, syntax, compatible
+
+    puts sass.code
     
   end
 end

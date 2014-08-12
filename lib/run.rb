@@ -1,4 +1,4 @@
-require 'icomoon2sass'
+require 'icomoon2sass/cli'
 
 
 ARGV << '--help' if ARGV.empty?

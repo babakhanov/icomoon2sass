@@ -21,5 +21,6 @@ Gem::Specification.new do |spec|
   #spec.add_development_dependency 'rake'
   spec.add_dependency('thor')
   spec.add_dependency('rubyzip')
+  spec.add_dependency('sass', '>= 3.2.0')
 end
 
