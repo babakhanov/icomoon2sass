@@ -1,10 +1,10 @@
 PATH
   remote: ./
   specs:
-    icomoon2sass (0.0.1)
-      rubyzip
+    icomoon2sass (1.0.0)
+      rubyzip (~> 1.1)
       sass (>= 3.2.0)
-      thor
+      thor (~> 0.19)
 
 GEM
   remote: https://rubygems.org/

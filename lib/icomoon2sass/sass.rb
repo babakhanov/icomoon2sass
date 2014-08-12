@@ -21,7 +21,7 @@ class Icomoon2Sass::Sass
       icons = font.icons
       font_family = font.font_family
 
-      tmpl = File.read("lib/icomoon2sass/templates/#{format}.sass.erb")
+      tmpl = File.read("#{File.dirname(__FILE__)}/templates/#{format}.sass.erb")
 
       renderer = ERB.new(tmpl)
       renderer.result(binding)
