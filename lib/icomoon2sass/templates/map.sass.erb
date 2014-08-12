@@ -8,6 +8,22 @@ $icons: ( <%=
 %> )
 
 
+///**
+// * Allows you to access an individual icon by name.
+// *
+// * @param {String} $name - name of icon
+// *
+// * @example scss
+// * .foo {
+// *   content: icon(github);
+// * }
+// *
+// * @return {String | Null}
+// */
+@function icon($name)
+  @return map-get($icons, $name)
+
+
 %icon-pseudo-content
   font-family: '<%= font_family %>'
   speak: none
