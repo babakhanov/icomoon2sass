@@ -1,13 +1,11 @@
-$icons: (
-  <%=
+$icons: ( <%=
   list = []
   icons.each do |icon, contents|
-    list.push "$#{icon}: '#{contents[:codepoint]}'"
+    list.push "#{icon}: '#{contents[:codepoint]}'"
   end
 
-  list.join(",\n  ")
-%>
-)
+  list.join(", ")
+%> )
 
 
 %icon-pseudo-content
