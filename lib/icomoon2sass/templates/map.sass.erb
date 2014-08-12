@@ -1,0 +1,16 @@
+$icons: (
+  <%=
+  list = []
+  icons.each do |icon, contents|
+    list.push "$#{icon}: '#{contents[:codepoint]}'"
+  end
+
+  list.join(",\n  ")
+%>
+)
+
+@each $placeholder, $content in $icons
+  %#{$placeholder}-icon
+    @each $value in $content
+      content: $value
+

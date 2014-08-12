@@ -1,0 +1,9 @@
+<% icons.each do |icon, content| 
+%>$<%= "#{icon}-icon: \'#{content[:codepoint]}\'" %>
+<% end 
+
+icons.each do |icon, content| %>
+<%= "%#{icon}-icon" %>
+  content: <%= "$#{icon}-icon" %>
+<% end %>
+

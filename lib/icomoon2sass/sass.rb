@@ -8,50 +8,18 @@ class Icomoon2Sass::Sass
     @syntax = syntax
 
     if compatible
-      @code = sass_convert 'sass', syntax, list_template(icons.icons)
+      @code = sass_convert 'sass', syntax, template('list', icons.icons)
       
     else
-      @code = sass_convert 'sass', syntax, map_template(icons.icons)
+      @code = sass_convert 'sass', syntax, template('map', icons.icons)
     end
   end
 
   private
 
-    def map_template(icons)
-      list = []
-      icons.each do |icon, contents|
-        list.push "#{icon}: '#{contents[:codepoint]}'"
-      end
-
-      tmpl = '$icons: (
-<%= list.join(",\n  ") %>
-)
-      
-@each $placeholder, $content in $icons
-  %#{$placeholder}-icon
-    @each $value in $content
-      content: $value
-
-'
-
-      renderer = ERB.new(tmpl)
-      renderer.result(binding)
-    end
-
-    def list_template(icons)
-      tmpl = '<% icons.each do |icon, content|
-%><%= "$#{icon}-icon: \'#{content[:codepoint]}\'"
-%>
-<% end %>
-
-<% icons.each do |icon, content|
-%>%<%= "#{icon}-icon" %>
-  content: <%= "$#{icon}-icon" %>
-
-<% end %>
-
-'
-
+    def template(format, icons)
+      tmpl = File.read("lib/icomoon2sass/templates/#{format}.sass.erb")
+  
       renderer = ERB.new(tmpl)
       renderer.result(binding)
     end
