@@ -3,10 +3,10 @@ require 'json'
 class Icomoon2Sass::Font
   attr_reader :icons, :font_family
 
-  def initialize(files)
+  def initialize(metadata)
     @icons = {}
 
-    json = JSON.parse(files.files['selection.json'])
+    json = JSON.parse(metadata)
 
     @font_family = json['preferences']['fontPref']['metadata']['fontFamily']    
 

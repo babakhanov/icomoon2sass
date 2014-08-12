@@ -1,5 +1,4 @@
-class Icomoon2Sass::Dir
-  attr_reader :files
+class Icomoon2Sass::Dir < Icomoon2Sass::Archive
 
   def initialize(directory)
     @files = {}
@@ -15,7 +14,7 @@ class Icomoon2Sass::Dir
   private
 
     def extractable?(entry)
-      return Icomoon2Sass::EXTRACTABLE_PATTERN.match(entry) && File.file?(entry)
+      return EXTRACTABLE_PATTERN.match(entry) && File.file?(entry)
     end
 
 end

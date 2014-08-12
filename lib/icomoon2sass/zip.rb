@@ -1,7 +1,6 @@
 require 'zip'
 
-class Icomoon2Sass::Zip
-  attr_reader :files
+class Icomoon2Sass::Zip < Icomoon2Sass::Archive
 
   def initialize(zip_file)
     @files = {}
@@ -16,7 +15,7 @@ class Icomoon2Sass::Zip
   private
 
     def extractable?(entry)
-      return Icomoon2Sass::EXTRACTABLE_PATTERN.match(entry.name) && entry.ftype == :file
+      return EXTRACTABLE_PATTERN.match(entry.name) && entry.ftype == :file
     end
 
 end
