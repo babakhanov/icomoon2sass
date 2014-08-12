@@ -9,7 +9,7 @@ class Icomoon2Sass::Sass
 
     if compatible
       @code = sass_convert 'sass', syntax, template('list', font)
-      
+
     else
       @code = sass_convert 'sass', syntax, template('map', font)
     end
@@ -22,7 +22,7 @@ class Icomoon2Sass::Sass
       font_family = font.font_family
 
       tmpl = File.read("lib/icomoon2sass/templates/#{format}.sass.erb")
-  
+
       renderer = ERB.new(tmpl)
       renderer.result(binding)
     end

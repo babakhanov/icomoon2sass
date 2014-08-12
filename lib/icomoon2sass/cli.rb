@@ -41,6 +41,16 @@ class Icomoon2Sass::CLI < Thor::Group
     sass = Icomoon2Sass::Sass.new font, syntax, compatible
 
     
+
+    
+    # Save the Sass file
+    create_file "#{options['sass-path']}/_icons.#{sass.syntax}", sass.code
+
+    files.font_files.each do |filename, content|
+
+      create_file "#{options['font-path']}/#{filename.sub('fonts/', '')}", content
+    end
+
   end
 end
 
