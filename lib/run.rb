@@ -47,6 +47,27 @@ OUTPUT
 
     %gear-icon
       content: $gear-icon
+
+OOCSS
+
+  By default, icomoon2sass only generates Sass placeholder selectors. If you need
+  literal CSS classes pass the '--oocss' flag, and icomoon2sass will generate a
+  second Sass file, '_oocss_icons.sass', containing CSS classes for each icon.
+
+    @each $placeholder, $content in $icons
+      .\#{$placeholder}-icon:before
+        @extend %\#{$placeholder}-icon
+
+  Or, for Sass 3.2, something like this:
+
+    .github-icon:before
+      @extend %github-icon
+
+    .twitter-icon:before
+      @extend %twitter-icon
+
+    .gear-icon:before
+      @extend %gear-icon
 EOT
 
 command = ARGV[0]
