@@ -7,16 +7,20 @@ ARGV << '--help' if ARGV.empty?
 help_message = <<-EOT
 Usage: icomoon2sass path/to/icomoon(.zip) [OPTIONS]
 
+You can also pass the path to an unzipped directory.
+
+
 OPTIONS
   --font-path PATH  Destination path for font files, defaults to current directory
   --sass-path PATH  Destination path for Sass files, defaults to current directory
   --scss            Use the SCSS syntax
   -c, --compatible  Generate code compatible with Sass 3.2
+  --oocss           Generate OOCSS-style classes
 
 
 OUTPUT
   By default icomoon2sass generates Sass code in the indented Sass syntax. Further,
-  the default generated code is only compaitble with Sass 3.3+.
+  the default generated code is only compatible with Sass 3.3+.
 
     $icons: (
         github: \'\\28\',

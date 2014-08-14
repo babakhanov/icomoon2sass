@@ -8,7 +8,14 @@ A gem that makes using [IcoMoon](http://icomoon.io) even better!
 
 ## Usage
 
-`icomoon2sass path/to/icomoon(.zip) [OPTIONS]`
+Pass a path to a zip file downloaded from IcoMoon:
+
+`icomoon2sass path/to/icomoon.zip [OPTIONS]`
+
+Or the path to an unzipped directory:
+
+`icomoon2sass path/to/icomoon [OPTIONS]`
+
 
 
 ### OPTIONS
@@ -21,7 +28,7 @@ A gem that makes using [IcoMoon](http://icomoon.io) even better!
 ```
 
 #### OUTPUT
-By default icomoon2sass generates Sass code in the indented Sass syntax. Further, the default generated code is only compaitble with Sass 3.3+.
+By default `icomoon2sass` generates Sass code in the indented Sass syntax. Further, the default generated code is only compatible with Sass 3.3+.
 
 ```sass
 $icons: (
