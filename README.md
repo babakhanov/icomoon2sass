@@ -1,12 +1,15 @@
-# icomoon2sass
+# Icomoon2Sass
 
-A gem that makes using [IcoMoon](http://icomoon.io) even better!
+A gem that makes using [IcoMoon](http://icomoon.io) even better! 
 
 ## Installation
 
 `gem install icomoon2sass`
 
+
 ## Usage
+
+#### From the command line:
 
 Pass a path to a zip file downloaded from IcoMoon:
 
@@ -17,8 +20,30 @@ Or the path to an unzipped directory:
 `icomoon2sass path/to/icomoon [OPTIONS]`
 
 
+#### From a Ruby script
+
+`icomoon2sass` can also be called from a Ruby script like so:
+
+```ruby
+Icomoon2Sass.run! source, font_path, sass_path, options
+```
+
+Rakefile example:
+
+```ruby
+require 'icomoon2sass`
+
+desc 'My Icomoon to Sass task'
+task :icomoon do
+  Icomoon2Sass.run! './icomoon', './fonts', './sass', {compatible: true}
+end
+```
+
 
 ### OPTIONS
+
+#### Command line options
+
 ```
   --font-path PATH  Destination path for font files, defaults to current directory
   --sass-path PATH  Destination path for Sass files, defaults to current directory
@@ -27,7 +52,22 @@ Or the path to an unzipped directory:
   --oocss           Generate OOCSS-style classes
 ```
 
-#### OUTPUT
+#### Ruby options
+
+The `options` argument to `Icomoon2Sass::run!` accepts a hash with any of the following keys: 
+
+```
+  scss        Boolean   Use the SCSS syntax
+  compatible  Boolean   Generate code compatible with Sass 3.2
+  oocss       Boolean   Generate OOCSS-style classes
+```
+
+The default value for all options is `false`.
+
+
+
+
+### OUTPUT
 By default `icomoon2sass` generates Sass code in the indented Sass syntax. Further, the default generated code is only compatible with Sass 3.3+.
 
 ```sass
@@ -45,7 +85,7 @@ $icons: (
 ```
 
 
-Sass 3.2 doesn't support hash-like maps, so if you're still using 3.2, you'll need to set the `-c` flag, which will generate code like this:
+Sass 3.2 doesn't support hash-like maps, so if you're still using 3.2, you'll need to set the `-c` flag (or pass `compatible: true` in the `options` argument to `run!`), which will generate code like this:
 
 ```sass
 $github-icon: '\28'
