@@ -13,7 +13,9 @@ module Icomoon2Sass
     defaults = {
       scss: false,
       compatible: false,
-      oocss: false
+      oocss: false,
+      demo_path: options[:"demo-path"],
+      session_path: options[:"session-path"]
     }
 
     options = defaults.merge options.symbolize_keys
@@ -53,20 +55,20 @@ module Icomoon2Sass
       utilities.create_file "#{font_path}/#{filename.sub('fonts/', '')}", content
     end
 
-    if options[:"demo-path"]
+    if options[:demo_path]
       files.demo_files.each do |filename, content|
-        utilities.create_file "#{options[:"demo-path"]}/#{filename}", content
+        utilities.create_file "#{options[:demo_path]}/#{filename}", content
       end
 
       files.font_files.each do |filename, content|
-        utilities.create_file "#{options[:"demo-path"]}/demo-files/fonts/#{filename.sub('fonts/', '')}", content
+        utilities.create_file "#{options[:demo_path]}/demo-files/fonts/#{filename.sub('fonts/', '')}", content
       end
 
-      utilities.gsub_file "#{options[:"demo-path"]}/demo.html", /href="style.css">/, 'href="demo-files/style.css">'
+      utilities.gsub_file "#{options[:demo_path]}/demo.html", /href="style.css">/, 'href="demo-files/style.css">'
     end
 
-    if options[:"session-path"]
-      utilities.create_file "#{options[:"session-path"]}/session.json", files.session_file
+    if options[:session_path]
+      utilities.create_file "#{options[:session_path]}/session.json", files.session_file
     end
   end
 
