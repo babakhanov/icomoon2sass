@@ -25,7 +25,7 @@ module Icomoon2Sass
     if source.end_with? '.zip'
       files = Icomoon2Sass::Zip.new source
 
-    elsif Dir.exists? source
+    elsif ::Dir.exists? source
       files = Icomoon2Sass::Dir.new source
 
     else
