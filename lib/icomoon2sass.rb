@@ -53,6 +53,21 @@ module Icomoon2Sass
       utilities.create_file "#{font_path}/#{filename.sub('fonts/', '')}", content
     end
 
+    if options[:"demo-path"]
+      files.demo_files.each do |filename, content|
+        utilities.create_file "#{options[:"demo-path"]}/#{filename}", content
+      end
+
+      files.font_files.each do |filename, content|
+        utilities.create_file "#{options[:"demo-path"]}/demo-files/fonts/#{filename.sub('fonts/', '')}", content
+      end
+
+      utilities.gsub_file "#{options[:"demo-path"]}/demo.html", /href="style.css">/, 'href="demo-files/style.css">'
+    end
+
+    if options[:"session-path"]
+      utilities.create_file "#{options[:"session-path"]}/session.json", files.session_file
+    end
   end
 
 end

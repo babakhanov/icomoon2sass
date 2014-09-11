@@ -1,6 +1,6 @@
 # Icomoon2Sass
 
-A gem that makes using [IcoMoon](http://icomoon.io) even better! 
+A gem that makes using [IcoMoon](http://icomoon.io) even better!
 
 ## Installation
 
@@ -45,21 +45,27 @@ end
 #### Command line options
 
 ```
-  --font-path PATH  Destination path for font files, defaults to current directory
-  --sass-path PATH  Destination path for Sass files, defaults to current directory
-  --scss            Use the SCSS syntax
-  -c, --compatible  Generate code compatible with Sass 3.2
-  --oocss           Generate OOCSS-style classes
+  --font-path PATH      Destination path for font files, defaults to current directory
+  --sass-path PATH      Destination path for Sass files, defaults to current directory
+  --scss                Use the SCSS syntax
+  -c, --compatible      Generate code compatible with Sass 3.2
+  --oocss               Generate OOCSS-style classes
+  --demo-path PATH      Copy demo.html from SOURCE to PATH/demo.html
+                        If omitted, the demo file will be ignored
+  --session-path PATH   Copy selection.json from SOURCE to PATH/selection.json
+                        If omitted, the demo file will be ignored
 ```
 
 #### Ruby options
 
-The `options` argument to `Icomoon2Sass::run!` accepts a hash with any of the following keys: 
+The `options` argument to `Icomoon2Sass::run!` accepts a hash with any of the following keys:
 
 ```
-  scss        Boolean   Use the SCSS syntax
-  compatible  Boolean   Generate code compatible with Sass 3.2
-  oocss       Boolean   Generate OOCSS-style classes
+  scss          Boolean     Use the SCSS syntax
+  compatible    Boolean     Generate code compatible with Sass 3.2
+  oocss         Boolean     Generate OOCSS-style classes
+  demo_path     Boolean/path   If truthy, copy demo.html to the specified path
+  session_path  Boolean/path   If truthy, copy selection.json to the specified path
 ```
 
 The default value for all options is `false`.

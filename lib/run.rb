@@ -11,11 +11,15 @@ You can also pass the path to an unzipped directory.
 
 
 OPTIONS
-  --font-path PATH  Destination path for font files, defaults to current directory
-  --sass-path PATH  Destination path for Sass files, defaults to current directory
-  --scss            Use the SCSS syntax
-  -c, --compatible  Generate code compatible with Sass 3.2
-  --oocss           Generate OOCSS-style classes
+  --font-path PATH      Destination path for font files, defaults to current directory
+  --sass-path PATH      Destination path for Sass files, defaults to current directory
+  --scss                Use the SCSS syntax
+  -c, --compatible      Generate code compatible with Sass 3.2
+  --oocss               Generate OOCSS-style classes
+  --demo-path PATH      Copy demo.html from SOURCE to PATH/demo.html
+                        If omitted, the demo file will be ignored
+  --session-path PATH   Copy selection.json from SOURCE to PATH/selection.json
+                        If omitted, the demo file will be ignored
 
 
 OUTPUT
