@@ -11,7 +11,7 @@ class Icomoon2Sass::Font
     @font_family = json['preferences']['fontPref']['metadata']['fontFamily']    
 
     json['icons'].each do |icon|
-      @icons[icon['properties']['name']] = {
+      @icons[icon['properties']['name'].gsub(/[[:punct:]\s]/, '-')] = {
         character: [icon['properties']['code']].pack('U'),
         codepoint: '\%0x' % icon['properties']['code'].ord
       }
